@@ -172,6 +172,7 @@ ul {
     top: 0;
     left: 0;
     white-space: nowrap;
+    padding: 3px 3px 1px 1px;
 }
 
 .button_container{
@@ -234,7 +235,7 @@ ul {
         width: 50%;
     }
     .time{
-        padding: 3px;
+        padding: 3px 3px 1px 6px;
         float: left;
         position: absolute;
         left: 0;
@@ -297,7 +298,6 @@ ul {
     }
 
     .time {
-        padding: 5px;
         float: left;
         position: absolute;
         left: 0;
@@ -311,4 +311,5 @@ ul {
         padding: 15px;
         }
 }
+
 
