@@ -8,12 +8,15 @@ const archivedTotal = document.querySelector('.archive_counter')
 const btnSortPriority = document.querySelector('#btn_sort_priority');
 const archivedResult = document.querySelector('#result_archive');
 // Active task array
-const inputArray = [];
+let inputArray = [];
+//Archive task array
+let archivedTasksArr = [];
 //Event Listener for input
 btn_input.addEventListener('click', (e) => {
 tasksInArray(input.value);
 console.log(inputArray);
 addRemoveTasks (inputArray);
+saveDataToLocalStorage();
 input.value = '';
 });
 input.addEventListener('keydown', (e) => {
@@ -27,11 +30,13 @@ input.addEventListener('keydown', (e) => {
 btnSortPriority.addEventListener('click', (e) => {
  sortTasksByPriority(inputArray);
  addRemoveTasks(inputArray);
+ saveDataToLocalStorage();
 });
 
 btnSortDate.addEventListener('click', (e) => {
   onlyDateSort(inputArray);
   addRemoveTasks(inputArray);
+  saveDataToLocalStorage();
 });
 //Get the values from input and turn them into an object
 function tasksInArray (value) {
@@ -43,6 +48,8 @@ function tasksInArray (value) {
     };
     inputArray.push(message);
     }};
+
+loadDataFromLocalStorage()
 //The main function for creating active tasks
 function addRemoveTasks (array) {
   //updating counters
@@ -99,6 +106,7 @@ archiveBtn.addEventListener('click', (e) => {
     const index = inputArray.indexOf(message);
     removeTasks(index, inputArray);
     addRemoveTasks (inputArray);
+    saveDataToLocalStorage();
 });
 });
 };
@@ -143,8 +151,7 @@ function onlyDateSort(array) {
       sortDirection = 1;
     }
 };
-//Archive task array
-const archivedTasksArr = [];
+
 //Moving the task to the archive
 function archivedTasksAdd(message) {
 archivedTasksArr.push(message);
@@ -189,7 +196,8 @@ function archivedTasksCreateElement (array) {
     deleteBtn.addEventListener('click', (e) => {
       const index = archivedTasksArr.indexOf(message);
       li.remove();
-      removeTasks(index, array)
+      removeTasks(index, array);
+      saveDataToLocalStorage();
 });
   //Task recovery event listener
     recoveryBtn.addEventListener('click', (e) => {
@@ -199,6 +207,27 @@ function archivedTasksCreateElement (array) {
       recovery(inputArray, message);
       removeTasks(index, array);
       addRemoveTasks(inputArray);
+      saveDataToLocalStorage();
   });
 });
+};
+
+
+function saveDataToLocalStorage() {
+  const inputArrayJSON = JSON.stringify(inputArray);
+  const archivedTasksArrJSON = JSON.stringify(archivedTasksArr);
+
+  localStorage.setItem('inputArray', inputArrayJSON);
+  localStorage.setItem('archivedTasksArr', archivedTasksArrJSON);
+}
+
+function loadDataFromLocalStorage() {
+  const inputArrayJSON = localStorage.getItem('inputArray');
+  const archivedTasksArrJSON = localStorage.getItem('archivedTasksArr');
+
+  inputArray = JSON.parse(inputArrayJSON) || [];
+  archivedTasksArr = JSON.parse(archivedTasksArrJSON) || [];
+
+   addRemoveTasks(inputArray);
+   archivedTasksCreateElement(archivedTasksArr);
 }
