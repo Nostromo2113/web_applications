@@ -228,7 +228,7 @@ ul {
         font-size: 13px;
         width: 90%;
         float: none;
-        padding: 13px;
+        padding: 15px 15px 13px 8px;
     }
     .active_container, .archive_container{
         width: 50%;
