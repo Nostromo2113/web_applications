@@ -12,13 +12,6 @@ let inputArray = [];
 //Archive task array
 let archivedTasksArr = [];
 //Event Listener for input
-btn_input.addEventListener('click', (e) => {
-tasksInArray(input.value);
-console.log(inputArray);
-addRemoveTasks (inputArray);
-saveDataToLocalStorage();
-input.value = '';
-});
 input.addEventListener('keydown', (e) => {
     if(e.keyCode === 13){
     tasksInArray(input.value);
@@ -89,8 +82,7 @@ array.forEach ((message) => {
     }
     //We look at the priority of the task, and set the appropriate class
         if(message.priority > 1){
-        taskLi.id = 'task_click_priority';
-        taskLi.className = 'task';
+        taskLi.className = 'task_click_priority';
         } else {
         taskLi.className = 'task'
         };
@@ -113,8 +105,8 @@ archiveBtn.addEventListener('click', (e) => {
 //Function for removing elements from an array
 function removeTasks (index, array) {
     if(index !== -1){
-    array.splice(index, 1);
-    archivedTotal.textContent = " " + archivedTasksArr.length;
+      array.splice(index, 1);
+      archivedTotal.textContent = " " + archivedTasksArr.length;
     }
 };
 //Function for changing the priority of a task
