@@ -15,15 +15,19 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+span,
+ul {
     margin: 0;
     padding: 0;
 }
 
-.main_container{
-    width: auto;
-    margin: 0 8px 0 10px;
-}
+ .main_container {
+    width: 100%;
+    max-width: 800px;
+     margin: 0 auto;
+     padding: 0 7px;
+ }
 
 header{
 padding: 2px 0 5px 0;
@@ -32,27 +36,33 @@ box-shadow: 2px 1px 6px rgb(35 49 92 / 66%);
 font-size: 8px;
 text-shadow: #1b3265 1px 1px 16px;
 color: #383535;
-width: auto;
+height: 42px;
 }
 
 .header_inner{
     display: flex;
-    justify-content: flex-start;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 4px;
+}
+
+.input_wrapper{
+    display: flex;
+    flex-direction: row;
+    width: 70%;
 }
 
 .todo_title{
     white-space: nowrap;
-    margin: 8px 30px 7px 0;
 }
 
 input{
-height: 25px;
-padding: 12px;
-width: 73%;
+height: 30px;
+padding: 10px;
+width: 100%;
 border: 0;
 border-radius: 20px;
 background-color: #b3b6f5;
-margin: 7px 3px 0px 3px;
 }
 input:focus {
     outline: none;
@@ -67,14 +77,15 @@ button {
 }
 
 .button_input{
-    padding: 8px;
-    height: 25px;
-    width: 25px;
+    padding: 10px;
+    height: 30px;
+    width: 30px;
     background-color: #b3b6f5;
     background-image: url(images/free-icon-message-10496948.png);
     background-size: 20px;
     background-repeat: no-repeat;
     background-position: center;
+    margin-left: 1px;
 }
 
 button:hover {
@@ -84,15 +95,16 @@ button:hover {
 
 #tasks_container{
     display: flex;
+    justify-content: center;
 }
 
 .active_container {
-    margin-top: 10px;
-    width: 45%;
+    margin-top: 9px;
+    width: 50%;
 }
 .archive_container{
     margin: 10px 0 0 10px;
-    width: 45%;
+    width: 50%;
 }
 
 #result_archive{
@@ -109,7 +121,6 @@ button:hover {
     background-size: 17px;
     border-radius: 40px;
     box-shadow: 2px 1px 6px rgb(35 49 92 / 66%);
-    background-size: 17px;
     background-position: center;
     background-repeat: no-repeat;
     
@@ -126,7 +137,6 @@ button:hover {
     background-size: 17px;
     border-radius: 40px;
     box-shadow: 2px 1px 6px rgb(35 49 92 / 66%);
-    background-size: 17px;
     background-position: center;
     background-repeat: no-repeat;
     
@@ -138,46 +148,54 @@ button:hover {
 }
 
 ul {
-    list-style: none;
     margin: 0;
     padding: 0;
 }
 
 .task{
-    background-color: linear-gradient(135deg, #c3d1ffd8, #c3d1ff);
     box-shadow: 1px 1px 17px #bed5ff;
     min-height: 43px;
     overflow-wrap: break-word;
     list-style-type: none;
-    width: 100%;
     cursor: grabbing;
     border-radius: 10px;
-    padding: 5px;
+    padding: 15px 15px 13px 8px;
     font-size: 12px;
     margin-bottom: 6px;
-    float: right;
     font-family: monospace;
     position: relative;
 }
 
-#task_click_priority {
+.task_click_priority {
     background: linear-gradient(45deg, #d5ddf6d8, #a9bad9);
     box-shadow: 1px 2px 15px #7ba3ee;
+    min-height: 43px;
+    overflow-wrap: break-word;
+    list-style-type: none;
+    cursor: grabbing;
+    border-radius: 10px;
+    padding: 15px 15px 13px 8px;
+    font-size: 12px;
+    margin-bottom: 6px;
+    font-family: monospace;
+    position: relative;
 }
 
 .time {
     font-size: 9px;
     margin: 1px 53px 0 0;
-    position: relative;
+    position: absolute;
     top: 0;
     left: 0;
     white-space: nowrap;
-    padding: 3px 3px 1px 1px;
-}
+    padding: 3px 3px 1px 6px;
+    }
 
-.button_container{
-    float: right;
-    padding: 1px;
+.button_container {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding: 3px;
 }
 
 .btn_task{
@@ -206,105 +224,18 @@ ul {
 }
 
 
-@media(min-width: 410px){
-    body{
-        font-size: 23px;
-    }
-    header{
-        font-size: 10px;
-    }
 
-    .main_container{
-        margin: 1px 10px 1px 10px;
-    }
 
-    input{
-        width: 80%;
-        margin: 10px 3px 0px 3px;
-    }
-    .task{
-        font-size: 13px;
-        width: 90%;
-        float: none;
-        padding: 15px 15px 13px 8px;
-    }
-    .active_container, .archive_container{
-        width: 50%;
-    }
-    .time{
-        padding: 3px 3px 1px 6px;
-        float: left;
-        position: absolute;
-        left: 0;
-        top: 0;
-    }
-    .button_container{
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        padding: 3px;
-    }
 
-}
-@media(min-width: 800px){
-    .header_inner {
-            margin: 0 100px 0 100px;
-        }
-    
-        .main_container {
-            margin: 0 100px 0 100px;
-        }
 
-    .header_inner{
-        justify-content: flex-start;
-    }
-
-    .todo_title{
-        margin: 16px 30px 7px 0;
-    }
-    input{
-        height: 39px;
-    }
-    .button_input{
-        height: 39px;
-        width: 39px;
-        margin-left: 0;
-        padding: 14px;
-    }
-}
 
 
 
 @media(min-width: 1000px){
-    .header_inner{
-        margin: 0 120px 0 120px;
-    }
-
-    .todo_title{
-        margin-right: 50px;
-    }
-    .main_container{
-        margin: 0 120px 0 120px;
-    }
-    
-    .task{
-        width: 60%;
+    .task, .task_click_priority{
         padding: 16px;
+        min-height: 70px;
     }
-
-    .time {
-        float: left;
-        position: absolute;
-        left: 0;
-        top: 0;
-        }
-    
-    .button_container {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        padding: 15px;
-        }
 }
 
 
