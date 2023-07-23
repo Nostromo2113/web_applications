@@ -17,33 +17,29 @@
     <header>
         <div class="main_container">
             <div class="header_inner">
-        <h1 class="todo_title">To-do List</h1>
-       <div><input placeholder="Entry" type="text" id="input" /><button class="button_input"></button></div>
+                <div class="input_wrapper"><input placeholder="Entry" type="text" id="input" /></div>
         </div>
-            </div>
     </header>
     <!-- TASKS -->
     <main>
         <div class="main_container">
-        <div id="tasks_container" class="main_container">
-        <div class="active_container">
-            <span>Active:</span><span class="active_counter"></span>
-           <div class="btn_sort_container"><button class="btn_sort" id="btn_sort_priority"></button><button class="btn_sort" id="btn_sort_date"></button></div>
-        <ul id="result_active">
+            <div id="tasks_container" class="main_container">
+                <div class="active_container">
+                    <span>Active:</span> <span class="active_counter"></span>
+                        <div class="btn_sort_container"><button class="btn_sort" id="btn_sort_priority"></button><button class="btn_sort" id="btn_sort_date"></button></div>
+                            <ul id="result_active">
     <!-- TASKS ZONE -->
-        
-        </ul>
-        </div>
-        <div class="archive_container">
-            <span>Archive:</span><span class="archive_counter"></span>
+                            </ul>
+                </div>
+            <div class="archive_container">
+                <span>Archive:</span> <span class="archive_counter"></span>
             <ul id="result_archive">
                 <!-- TASKS ZONE -->
-                
             </ul>
         </div>
         </div>
     </div>
-</div>
+    </div>
         </main>
     <footer></footer>
 <script src="./index.js"></script>
