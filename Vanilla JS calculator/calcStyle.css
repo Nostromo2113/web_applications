@@ -1,0 +1,91 @@
+body {
+    background-color: silver;
+}
+.calc {
+    margin: 50px auto;
+    width: 300px;
+    height: 500px;
+    border-radius: 20px;
+    background: #1E1E1E;
+    color: #fff;
+    font-family: Arial;
+    padding: 18px;
+    box-shadow: 4px 4px 4px #4f4f4f;
+}
+
+.calc-screen {
+    height: 125px;
+    padding: 10px;
+    background-color: #4f4f4f;
+    border-radius: 10px;
+
+    text-align: right;
+    font-size: 4rem;
+    margin: 0;
+}
+
+.result{
+    font-size: 50px;
+    margin: 0;
+}
+
+.history{
+font-size: 20px;
+}
+
+
+.buttons {
+    margin-top: 12px;
+    display: grid;
+    grid-template-areas: 
+    "ac plus-minus percent division"
+    "seven eigth nine multi"
+    "four five six minus"
+    "one two three plus"
+    "zero dot equal equal";
+    grid-gap: 7px;
+    justify-items: center;
+}
+
+.btn {
+    width: 60px;
+    height: 60px;
+    background: #333;
+    border-radius: 15%;
+    text-align: center;
+    line-height: 60px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.btn.equal {
+    grid-area: equal;
+    width: 100%;
+    border-radius: 8px;
+    background: linear-gradient(to left, #EE158D, #ff6739);
+}
+.btn:hover{
+    filter: brightness(140%)
+}
+
+.btn:active{
+    filter: brightness(76%);
+}
+
+.btn.bg-grey {
+    background: #a6a6a6;
+}
+.btn.bg-orange{
+    background: #EE158D;
+}
+.btn.ac{
+    color: #F22478;
+    font-weight: bold;
+    font-size: 25px; 
+}
+#calculations {
+font-size: 30px;
+position: relative;
+top: -73px;
+}
