@@ -16,7 +16,7 @@
 
 <my-dialog 
     v-model:show="dialogVisible">
-    <add-form 
+    <add-form v-focus 
     @close="dialogVisible = false" />
 </my-dialog>
 </template>
@@ -31,24 +31,7 @@ import {
 
 import { useTasksStore } from '../stores/TasksStore';
 
-import AddForm from '@/components/AddForm.vue';
-import TaskItem from '@/components/TaskItem.vue';
-import AddTask from '@/components/AddTask.vue';
-import TasksList from '@/components/TasksList.vue';
-import MyDialog from '@/components/UI/MyDialog.vue';
-import Search from '@/components/Search.vue';
-import Calendar from '@/components/calendar/Calendar.vue';
-
 export default {
-    components: {
-        TaskItem,
-        AddTask,
-        TasksList,
-        MyDialog,
-        AddForm,
-        Search,
-        Calendar,
-    },
     setup() {
 
         const store = useTasksStore();
@@ -119,20 +102,17 @@ export default {
 
 .header {
     padding: 5px 15px 0 15px;
-    height: 100px;
     width: 100%;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    margin: 18px 0;
 }
 
 .header-wrapper {
-    height: 85px;
     margin-bottom: 10px;
 }
 
 .container {
     max-width: 1000px;
-    padding: 10px;
+    padding: 0 10px;
     margin: auto;
 }
 

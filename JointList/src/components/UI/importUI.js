@@ -11,9 +11,10 @@ import LoadingSpinner from "../UI/LoadingSpinner.vue"
 import TimeVisible from "../UI/TimeVisible.vue"
 import Accordion from "../UI/Accordion.vue"
 import NavBar from "../UI/NavBar.vue";
+import CalendarTaskViewer from "../UI/CalendarTaskViewer.vue"
 export default [
     ButtonAdd, ButtonInput, MyInput, 
     ButtonItem, MyDialog, DefaultBtn, 
     TextBlock, MySelect, MyPage, LoadingSpinner, 
-    TimeVisible, Accordion, NavBar,
+    TimeVisible, Accordion, NavBar, CalendarTaskViewer
 ]

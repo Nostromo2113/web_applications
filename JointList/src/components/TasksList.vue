@@ -25,12 +25,12 @@ import TaskItem from '@/components/TaskItem.vue'
 import { useTasksStore } from '../stores/TasksStore'
 import {onMounted, ref, watch, computed} from 'vue'
     export default {
-
+      name: 'tasks-list',
       setup() {
         
                 const tasksStore = useTasksStore();
 
-    const todoList = computed(() => tasksStore.sortedAndSearchedPosts());
+    const todoList = ref(computed(() => tasksStore.sortedAndSearchedPosts()));
 
             onMounted(() => {
     })

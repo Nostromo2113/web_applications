@@ -27,7 +27,7 @@ export default {}
     background: rgb(28, 28, 28, 0.8);
     box-shadow: 0px 1px 2px rgba(255, 187, 0, 0.877);
     color: orange;
-    font-size: 12px;
+    font-size: 13px;
     margin: auto;
     top: 0;
     left: 0;
@@ -35,7 +35,7 @@ export default {}
     z-index: 9999;
 }
 .header-container {
-    height: 35px;
+    height: 40px;
 }
 .navbar {
     max-width: 1000px;
@@ -55,6 +55,15 @@ export default {}
 .navbar-btn {
     box-shadow: 0px 0px 2px 0px orange;
     background: #1F2937;
+    border-radius: 4px;
+}
+.navbar-btn:hover{
+    background: darkorange;
+    color: black;
+}
+.navbar-btn:active {
+    background: darkorange;
+    color: black;
 }
 
 .logo {

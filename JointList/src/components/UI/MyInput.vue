@@ -69,11 +69,10 @@ export default {
     padding: 10px 15px;
     align-items: center;
     border-radius: 10px;
-    box-shadow: 0px 0px 1px 0px orange;
     background: rgb(62 61 61);
     transition: 0.1s ease-in;
 }
 .input:focus {
-    box-shadow: 0px 0px 3px 2px orange;
+    box-shadow: 0px 0px 3px 1px orange;
 }
 </style>

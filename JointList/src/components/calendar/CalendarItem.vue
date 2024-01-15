@@ -1,15 +1,15 @@
 <template>
-    <div class="calendar-item" @click="day.overflow = !day.overflow"
+    <div class="calendar-item" @click="getTasksForToday(day.day, day)"
     v-for="(day, index) in date" :key="index" :class="{ 'calendar-item2': isDateMatch(day?.day), 'calendar-item_overflowvisible': day?.overflow}" >
-        <button  v-if="day?.day&&showButton" class="calendar-button"  @click="store.addCalendarMark(taskItems, day?.day), console.log(day?.day)">+</button>
-        
+        <button  v-if="day?.day&&showButton" class="calendar-button"  @click="day.overflow = !day.overflow, store.addCalendarMark(taskItems, day?.day)">+</button>
+        <button v-if="day?.overflowBtn" class="calendar-button">▼</button>
         <span 
             class="calendar-text-date" 
             v-if="day" 
             >
-                <button>{{ day.day.getDate() }}</button>
+                {{ day.day.getDate() }}
         </span>
-            <div v-for="(task, index) in tasks" :key="task.id">
+            <div v-for="task in tasks" :key="task.id">
                 <div 
                     v-if="day?.day && task.calendarMark === formatDay(day?.day)"
                     class="calendar-task"
@@ -17,7 +17,7 @@
                     'calendar-task-before': controlDate(task.unformattedCalendarMark, day?.day)==true, 
                     'calendar-task-after': controlDate(task.unformattedCalendarMark, day?.day)==false, 
                     }"
-                    @click="visibleFullTask(index), $router.push(`/taskpage/${task.id}`)"
+                    
                     >
                         {{ task.title }}
                 </div>
@@ -25,28 +25,55 @@
     </div>
 </template>
 <script>
+//@click="visibleFullTask(index), $router.push(`/taskpage/${task.id}`)"
+
 import { useTasksStore } from '../../stores/TasksStore';
-import {reactive, ref, onMounted} from 'vue'
+import {computed, ref, onMounted, watch} from 'vue'
 export default {
-    setup() {
+    emits: ['getTasksForToday', 'addCalendarMark', 'getOverflownBtnVisible'],
+    setup(props, { emit }) {
         const store = useTasksStore()
-        const tasks = reactive(useTasksStore().todoLists)
+        const tasks = ref(computed(() => store.sortedAndSearchedPosts()));
         const isOverflown = ref(false)
+        const dayDate = ref(null)
+        const dayObj = ref({})
 
         const toggleOverflow = () => {
             isOverflown.value = !isOverflown.value
             console.log('overflown')
         }
 
+
+        const getTasksForToday = (date, dayFullObj) => {
+            dayDate.value = date;
+            dayObj.value = dayFullObj;
+            const tasksForToday = tasks.value.filter(
+            (task) => new Date(task.unformattedCalendarMark).setHours(0, 0, 0, 0) === new Date(date).setHours(0, 0, 0, 0)
+            );
+            if(tasksForToday.length > 4) {
+            emit('getOverflownBtnVisible', dayObj);
+            } //To Calendar
+
+            emit('getTasksForToday', tasksForToday, date); //To CalendarTaskViewer
+        }
+        onMounted(() => {
+            getTasksForToday(new Date());
+        })   
+        watch(tasks, () => {
+            getTasksForToday(dayDate.value);
+        },{deep:true})
+
         return {
             store,
             tasks,
             isOverflown,
+            dayDate,
+            dayObj,
             toggleOverflow,
+            getTasksForToday,
         }
     },
 
-    emits: ['addCalendarMark'],
     data() {
         return {
             objItem: '',
@@ -65,7 +92,6 @@ export default {
         }
     },
     methods: {
-
 
 
 
@@ -107,6 +133,7 @@ export default {
                 return 
             }
         },
+        
     },
 }
 </script>
@@ -116,7 +143,7 @@ export default {
         box-shadow: 0px 0px 3px -1px orange;
         text-align: center;
         padding: 20px 3px 3px 3px;
-        height: 70px; 
+        height: 55px; 
         transition: ease-in 0.2s;
         font-size: 12px;
         position: relative;
@@ -169,7 +196,7 @@ export default {
         overflow: hidden;
         padding: 0 2px;
         position: relative;
-        z-index: 9999;
+        z-index: 9;
     }
     .calendar-task-before {
         background: orangered;

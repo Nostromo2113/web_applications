@@ -12,13 +12,13 @@ import {
 import {
     useRoute
 } from 'vue-router';
-import taskItem from "../components/TaskItem.vue";
 import {
     useTasksStore
 } from '../stores/TasksStore';
+import TaskItem from '../components/TaskItem.vue';
 export default {
-    components: {
-        taskItem
+    components:{
+        TaskItem
     },
     setup() {
         const todoList = ref(useTasksStore().todoLists);

@@ -14,11 +14,16 @@
     height: 68px;
     border-radius: 30%;
     background-color: #1F2937;
-    box-shadow: 0px 0px 1px 0px orange;
+    box-shadow: 0px 0px 1px 2px orange;
     position: fixed;
     bottom: 20px;
     right: 20px;
     color: orange;
     font-size: 48px;
+}
+.btn__add:active {
+    box-shadow: 0px 0px 3px 3px orange;
+    background-color: darkorange;
+    color: black;
 }
 </style>

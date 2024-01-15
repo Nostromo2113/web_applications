@@ -22,12 +22,12 @@
                 v-for="el in taskItems.list" 
                 :key="el.id">
                     <div class="redaction-element" v-if="elementRedactionInput !== el.id">
-                        <default-btn  @click="showRedactionInput(el.id)">✎
+                        <default-btn   @click="showRedactionInput(el.id)">✎
                         </default-btn>
                         <div style="width: 100%;">
                             {{el.item }}
                         </div>
-                        <default-btn class="btn-delete-taskelement" @click="removeTaskElement(el.id)">
+                        <default-btn  class="btn-delete-taskelement" @click="removeTaskElement(el.id)">
                             -
                         </default-btn>
                     </div>
@@ -48,9 +48,9 @@
                     </div>
                 </div>
             </div>
-            <button class="task__element" @click="createTaskElement(taskItems)">✚</button>
+            <button class="task__element"  @click="createTaskElement(taskItems)">✚</button>
         </Collapse>
-        <button-item style="right: 50%; transform: translateX(50%);" v-if="!taskFullWindow" @click="removeTask(taskItems.id)">-
+        <button-item style="right: 50%; transform: translateX(50%);" v-if="!taskFullWindow" @click="removeTask(taskItems.id)">🗑️
         </button-item>
         <button-item @click="showCalendarDialog()">📅
         </button-item>
@@ -74,14 +74,13 @@ import {
     onMounted,
     watch
 } from 'vue';
-import TimeVisible from './UI/TimeVisible.vue';
 import Calendar from '@/components/calendar/Calendar.vue'
 import {
     Collapse
 } from 'vue-collapsed'
 export default {
+    name: 'task-item',
     components: {
-        TimeVisible,
         Collapse,
         Calendar
     },
@@ -163,6 +162,7 @@ export default {
         }
 
         const controlDate = (taskDate) => {
+            if(taskDate){
             const today = new Date();
             const taskDay = new Date(taskDate);
             taskDay.setHours(0, 0, 0, 0);
@@ -175,6 +175,7 @@ export default {
             } else {
                 return
             }
+        }   
         };
 
         return {
@@ -211,7 +212,7 @@ export default {
     width: 100%;
     height: auto;
     display: flex;
-    padding: 10px 6px 25px 6px;
+    padding: 10px 6px 30px 6px;
     flex-direction: column;
     border-radius: 6px;
     background: rgb(47 47 47);
@@ -220,6 +221,7 @@ export default {
     font-size: 15px;
     margin-bottom: 5px;
     font-family: monospace;
+    color: #F5F5F5;
 }
 .task-item-before {
     box-shadow: 0px 0px 2px 1px orangered;
@@ -236,9 +238,18 @@ export default {
     border: none;
 }
 
+.task-elems__wrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+
 .taskElems {
     padding: 2px;
     font-size: 13px;
+    box-shadow: 0 2px 2px -2px #03a9f4;
 }
 
 .taskElems-full-window {

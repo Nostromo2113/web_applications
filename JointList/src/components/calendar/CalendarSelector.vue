@@ -70,13 +70,13 @@ export default {
     }
     .calendar-selector-wrapper {
         display: flex;
-        height: 20px;
-        margin: 20px;
+        padding: 20px;
         width: 50%;
     }
     .selector {
         width: 15%;
         transition: ease-in 0.2s;
+        font-size: 17px;
     }
     .selector:hover {
         text-shadow: 0px 2px 4px rgb(20 20 20 / 46%);
@@ -88,7 +88,7 @@ export default {
         text-align: center;
         text-transform: uppercase;
         width: 100%;
-        font-size: 10px;
+        font-size: 12px;
         line-height: 20px;
     }
 </style>

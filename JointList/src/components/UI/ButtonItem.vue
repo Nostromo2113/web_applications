@@ -14,11 +14,11 @@
     position: absolute;
     right: 6px;
     bottom: 6px;        
-    width: 20px;
-    height: 20px;
+    width: 25px;
+    height: 25px;
     box-shadow: 0px 0px 8px -3px orange;
     border-radius: 50%;
-    font-size: 12px;
+    font-size: 13px;
     
 }
 
