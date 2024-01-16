@@ -1,0 +1,76 @@
+<template>
+    <div 
+        class="calendar-task-viewer_wrapper" 
+        @click="console.log(clickDay)">
+            <div 
+                class="calendar-form-wrapper">
+                <p 
+                    class="date"
+                    >
+                    {{ day }}
+                </p>
+            <add-form  class="add-form"/>
+        </div>
+        <slot></slot>
+        
+    </div>
+</template>
+<script>
+import {ref, computed} from 'vue';
+import AddForm from '../AddForm.vue';
+import { useTasksStore } from '../../stores/TasksStore';
+export default {
+  components: { AddForm },
+    name: "calendar-task-viewer",
+    props:{
+        clickDay:{
+            type: Date,
+            default: new Date()
+        }
+    },
+
+
+    setup(){
+        const store = useTasksStore()
+        const day = ref(computed(() => new Date(store.clickDay).toLocaleDateString()));
+        const clickDay = ref(computed(() => new Date(store.clickDay)))
+
+    return {
+        day, 
+        store,
+        clickDay,
+    }
+    }
+}
+</script>
+<style scoped>
+    .calendar-task-viewer_wrapper {
+        margin: 0 auto 40px;
+        border-radius: 6px;
+        padding: 15px 15px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        background: rgb(28, 28, 28, 0.3);
+        font-family: monospace;
+    }
+    .date {
+        display: inline-block;
+        color: #f59923;
+        background: dimgrey;
+        padding: 10px;
+        border-radius: 8px;
+        width: fit-content;
+        line-height: normal;
+    }
+    .calendar-form-wrapper{
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    .add-form {
+        box-shadow: none;
+        width: 60%;
+    }
+</style>
