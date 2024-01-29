@@ -1,0 +1,21 @@
+.app {
+    color: var(--font-main-color);
+    background-color: var(--background-main);
+    min-height: 100vh;
+    overflow-x: hidden;
+    min-height: 100vh;
+    font-size: 16px;
+    transition: 0.6s ease-in;
+}
+
+
+
+.container {
+    max-width: 1300px;
+    padding: 0 10px;
+    margin: 0 auto;
+
+}
+
+
+
