@@ -1,0 +1,77 @@
+.container {
+  //к max-width добавляем значение padding, что бы макс ширина окна измерялась с учетом паддинга
+  //умножаем на 2, т.к. значение padding-inline добавляет это знач. с обоих сторон
+  //паддинг в итоге ужимает блок с двух сторон, и мы возвращаемся к размеру container-width
+  //и мы получаем исходную макс. ширину блока с учетом паддингов
+  max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+  margin-inline: auto;
+  padding-inline: var(--container-padding-x);
+}
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.hidden-mobile {
+  @include mobile {
+    display: none !important;
+  }
+}
+
+.visible-mobile {
+  @include mobile-above {
+    display: none !important;
+  }
+}
+
+.text-accent {
+  color: var(--color-accent) !important;
+}
+.text-dark {
+  color: var(--color-dark) !important;
+}
+
+.text-light {
+  color: var(--color-light) !important;
+}
+
+.bg-dark {
+  background: var(--color-dark) !important;
+}
+.bg-dark-alt {
+  background: var(--color-dark-alt) !important;
+}
+
+.bg-accent-alt {
+  background: var(--color-accent-alt) !important;
+}
+
+.bg-light {
+  background: var(--color-light) !important;
+}
+
+.bg-accent-light {
+  background: #b9e67f !important;
+}
+
+.bg-opacity {
+  background-color: rgba(255, 255, 255, 0);
+  background: rgba(255, 255, 255, 0);
+}
+
+.bg-gray {
+  background: var(--color-gray) !important;
+}
+
+.bg-dark-ghost {
+  background: var(--color-dark-alt) !important;
+  opacity: 50% !important;
+}
+
+.bg-accent {
+  background: var(--color-accent) !important;
+}
+
+.rounded-borders {
+  border-radius: 10px !important;
+}

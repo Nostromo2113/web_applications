@@ -1,0 +1,102 @@
+html {
+  @include mobile-above {
+    ::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    /* Фон полосы прокрутки */
+    ::-webkit-scrollbar-track {
+      background: var(--color-gray);
+      border-radius: 5px;
+    }
+
+    /* Цвет драгера (самой полосы) */
+    ::-webkit-scrollbar-thumb {
+      background: var(--color-accent-alt);
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    /* При наведении на полосу прокрутки */
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--color-accent);
+    }
+  }
+}
+
+body {
+  --body-font-size: clamp(0.875rem, 0.845rem + 0.27vw, 1.063rem); //14-17px
+  font-family: var(--font-family-base);
+  font-weight: 400;
+  line-height: 1.28;
+  color: var(--color-light);
+  background-color: var(--color-background);
+  transition-duration: var(--transition-duration);
+  @include mobile-above {
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+  }
+}
+
+ul,
+ul li {
+  list-style: none;
+  margin: 0;
+}
+
+a,
+button,
+input,
+textarea,
+svg * {
+  transition-duration: var(--transition-duration);
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3,
+h4,
+.h4 {
+  font-weight: 500;
+}
+
+h1,
+.h1 {
+  font-size: clamp(2rem, 1.92rem + 0.71vw, 2.5rem);
+}
+
+h2,
+.h2 {
+  font-size: clamp(2.25rem, 2.1rem + 0.5vw, 2.5rem);
+}
+
+h3,
+.h3 {
+  font-size: clamp(0.875rem, 0.645rem + 0.77vw, 1.25rem); //14-20
+}
+
+h4,
+.h4 {
+  font-size: clamp(1.125rem, 1.05rem + 0.25vw, 1.25rem);
+}
+
+p,
+.p {
+  font-size: clamp(0.875rem, 0.76rem + 0.38vw, 1.063rem);
+  margin: 0; //14-17;
+}
+
+//Transition vue
+.list-enter-active,
+.list-leave-active {
+  transition: all 0.4s ease;
+}
+.list-enter-from,
+.list-leave-to {
+  opacity: 0;
+  transform: translateX(25px);
+}
